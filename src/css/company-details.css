@@ -31,6 +31,7 @@
     color: #0A0909;
     background: #F4F6F7;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .otp{
@@ -42,6 +43,7 @@
     color: #ffffff;
     border: 1px solid #cecece;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .logo-container{
@@ -63,6 +65,14 @@
     font-weight: 400;
     font-size: 15px;
     
+}
+
+.image-label{
+    color: #ED5901;
+    font-weight: 400;
+    font-size: 15px;
+    padding-right: 200px;
+    cursor: pointer;
 }
 
 .disable{

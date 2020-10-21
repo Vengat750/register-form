@@ -8,7 +8,7 @@ import CompanyDetails from './pages/company-details';
 
 class App extends React.Component {
   render() {
-    return (
+   return (
       <div>
         <Switch>
           <Route exact path="/" component={PersonalDetails} />
@@ -17,7 +17,8 @@ class App extends React.Component {
           <Route path="/sucessfully-registered" component={Successfull} />
         </Switch>
       </div>
-    );
+    ); 
+    
   }
 }
 

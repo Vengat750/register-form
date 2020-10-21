@@ -6,6 +6,7 @@ import { setFormValues } from '../actions';
 import PageDescription from './page-description';
 import Checkbox from './checkbox';
 import Header from './header';
+import Country from './country';
 
 import '../css/personal-details.css';
 import '../css/header.css';
@@ -14,9 +15,9 @@ const required = value => value ? undefined : 'Required'
 const number = value => value && isNaN(Number(value)) ? 'Must be a number' : undefined
 
 const PersonalDetails = props => {
-    const { handleSubmit, gender, invalid } = props;
+    const { handleSubmit, gender, invalid, region,country } = props;
     let disable = 'disable';
-    if (gender && !invalid) {
+    if (gender && !invalid && region && country ) {
         disable = '';
     }
     const onSubmit = (values, dispatch) => {
@@ -53,29 +54,12 @@ const PersonalDetails = props => {
                                     />
                                 </div>
                             </div>
-                            <div>
+                            <div className='country'>
                                 <label>Country</label>
                                 <div>
-                                    <Field name="country" component="select" className='dropdown' validate={[required]}>
-                                        <option></option>
-                                        <option value="India">India</option>
-
-                                    </Field>
+                                <Field name='country and state' component={Country} />
                                 </div>
-                            </div>
-                            <div>
-                                <label>State</label>
-                                <div>
-                                    <Field name="state" component="select" className='dropdown' validate={[required]}>
-                                        <option></option>
-                                        <option value="Andra Pradesh">Andra Pradesh</option>
-                                        <option value="Bihar">Bihar</option>
-                                        <option value="Karnataka">Karnataka</option>
-                                        <option value="Kerala">Kerala</option>
-                                        <option value="TamilNadu">TamilNadu</option>
-
-                                    </Field>
-                                </div>
+                                
                             </div>
                             <div>
                                 <label>Phone</label>
@@ -106,7 +90,9 @@ const PersonalDetails = props => {
 
 function mapStateToProps(state) {
     return {
-        gender: state.details.gender
+        gender: state.details.gender,
+        region: state.details.region,
+        country: state.details.country,
     }
 }
 

@@ -16,9 +16,9 @@ const email = value =>
         'Invalid email address' : undefined
 
 const CompanyDetails = props => {
-    const { handleSubmit, invalid } = props;
+    const { handleSubmit, invalid, logo } = props;
     let disable = 'disable';
-    if (!invalid) {
+    if (!invalid && logo) {
         disable = '';
     }
     const onSubmit = (values, dispatch) => {
@@ -116,7 +116,12 @@ const CompanyDetails = props => {
     );
 };
 
+function mapStateToProps(state) {
+    return {
+        logo: state.details.logo,
+    }
+}
 
-let CompanyDetail = connect(null, { setFormValues })(CompanyDetails);
+let CompanyDetail = connect(mapStateToProps, { setFormValues })(CompanyDetails);
 
 export default reduxForm({ form: 'companyDetails' })(CompanyDetail);
